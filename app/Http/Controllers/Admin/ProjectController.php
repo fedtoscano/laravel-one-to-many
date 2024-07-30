@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\EditProjectRequest;
 use App\Http\Requests\StoreProjectRequest;
 use Illuminate\Http\Request;
+use App\Models\Type;
 use App\Models\Project;
 
 class ProjectController extends Controller
@@ -27,7 +28,8 @@ class ProjectController extends Controller
     {
         //
         $project = new Project();
-        return view("admin.projects.create", compact("project"));
+        $types = Type::all();
+        return view("admin.projects.create", compact("project", "types"));
     }
 
     /**
@@ -37,6 +39,7 @@ class ProjectController extends Controller
     {
         $data=$request->validated();
         // dump($request);
+
         $newProject = Project::create($data);
         return redirect("admin/projects");
     }
@@ -47,7 +50,8 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         //
-        return view("admin.projects.show", compact("project"));
+        $types = Type::all()->pluck("id");
+        return view("admin.projects.show", compact("project", "types"));
     }
 
     /**
@@ -55,8 +59,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-
-        return view("admin.projects.edit", compact("project"));
+        $types = Type::all();
+        return view("admin.projects.edit", compact("project", "types"));
     }
 
     /**

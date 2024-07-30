@@ -24,4 +24,8 @@ class Project extends Model
         'project_manager',
         'team_members',
     ];
+
+    public function type(){
+        return $this->belongsTo(Type::class);
+    }
 }
