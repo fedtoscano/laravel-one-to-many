@@ -20,6 +20,31 @@
                 </div>
 
                 <div class="mb-3">
+                    @error("categories")
+                        <div class="alert alert-danger mb-3">
+                            {{$message}}
+                        </div>
+                    @enderror
+
+                    <div class="btn-grou flex-wrap d-flex" role="group" aria-label="Basic checkbox toggle button group">
+                        @foreach ($technologies as $technology)
+                            @if ($errors->any())
+                            <input name="technologies[]" type="checkbox" class="btn-check" id="technology-check-{{$technology->id }}"
+                            autocomplete="off" value="{{$technology->id}}" {{in_array($technologies->id, old($technologies, [])) ? "checked" : ""}}>
+
+                            @else
+                            <input name="technologies[]" type="checkbox" class="btn-check" id="technology-check-{{$technology->id }}"
+                            autocomplete="off" value="{{$technology->id}}" {{($project->technologies->contains($technology)) ? "checked" : ""}}>
+                            @enderror
+
+                            <label for="technologies-check-{{$technology->id}}" class="btn btn-outline-primary mb-2">
+                                {{$technology->name}}
+                            </label>
+                        @endforeach
+                    </div>
+                </div>
+
+                <div class="mb-3">
                     <label for="Project description" class="form-label">Project's Description</label>
                     <input type="text" class="form-control" id="project-description" name="description"
                     value="{{old("description", $project->description)}}">
@@ -74,39 +99,7 @@
                     @enderror
                 </div>
 
-                <div class="mb-3">
-                    <label for="Project Tech Stack" class="form-label">Project's Tech Stack</label>
-                    <input type="text" class="form-control" id="project-tech_stack" name="tech_stack"
-                    value="{{old("tech_stack", $project->tech_stack)}}">
-                    @error("tech_stack")
-                    <div>
-                        {{$message}}
-                    </div>
-                    @enderror
-                </div>
 
-                <div class="mb-3">
-                    <label for="Project manager" class="form-label">Project's manager</label>
-                    <input type="text" class="form-control" id="project-manager" name="project_manager"
-                    value="{{old("manager", $project->project_manager)}}">
-                    @error("project_manager")
-                    <div>
-                        {{$message}}
-                    </div>
-                    @enderror
-                </div>
-
-
-                <div class="mb-3">
-                    <label for="Project team" class="form-label">Project's team</label>
-                    <input type="text" class="form-control" id="project-team" name="team_members"
-                    value="{{old("team", $project->team_members)}}">
-                    @error("team_members")
-                    <div>
-                        {{$message}}
-                    </div>
-                    @enderror
-                </div>
                 <input type="submit" class="btn btn-primary" value="@yield("input-value-text")"></input>
             </form>
         </div>
