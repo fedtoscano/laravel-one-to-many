@@ -27,6 +27,8 @@ return new class extends Migration
             //
             $table->dropForeign(['type_id']);
             $table->dropColumn('type_id');
+
+
         });
     }
 };

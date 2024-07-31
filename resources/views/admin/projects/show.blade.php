@@ -1,7 +1,6 @@
 @extends("layouts.admin")
 
 @section("content")
-@dump($types)
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-8">
@@ -9,6 +8,7 @@
                     <div class="card-body">
                     <h3 class="card-title">{{$project->name}}</h3>
                     <h6 class="card-subtitle mb-2 text-body-secondary">Commissioned by: {{$project->client}}</h6>
+                    <h6 class="card-subtitle mb-2 text-body-tertiary">Tipo di progetto: <strong>{{$project->type->name}}</strong></h6>
                     <h5>Project Description</h5>
                     <p class="card-text"><em>{{$project->description}}</em></p>
                     <p class="card-text"><strong>Tech Stack:</strong>

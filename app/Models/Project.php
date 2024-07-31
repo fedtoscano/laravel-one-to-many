@@ -20,12 +20,14 @@ class Project extends Model
         'status',
         'budget',
         'repository',
-        'tech_stack',
         'project_manager',
-        'team_members',
     ];
 
     public function type(){
         return $this->belongsTo(Type::class);
+    }
+
+    public function technologies(){
+        return $this->hasMany(Technology::class);
     }
 }

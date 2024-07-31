@@ -18,12 +18,10 @@ return new class extends Migration
             $table->string('client')->nullable(); // Cliente
             $table->date('start_date')->nullable(); // Data di inizio
             $table->date('end_date')->nullable(); // Data di fine
-            $table->string('status')->default('in progress'); // Stato del progetto
+            $table->boolean('status')->default(true); // Stato del progetto
             $table->decimal('budget', 15, 2)->nullable(); // Budget
             $table->string('repository')->nullable(); // URL del repository di codice
-            $table->string('tech_stack')->nullable(); // Stack tecnologico utilizzato
-            $table->string('project_manager')->nullable(); // Nome del project manager
-            $table->string('team_members')->nullable(); // Membri del team
+            // $table->string('team_members')->nullable(); // Membri del team
             $table->softDeletes();
             $table->timestamps();
         });

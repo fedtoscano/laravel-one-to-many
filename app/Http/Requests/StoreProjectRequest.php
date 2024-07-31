@@ -24,6 +24,7 @@ class StoreProjectRequest extends FormRequest
         return [
             //
             'name' => 'required|string|max:255',
+            "type_id" => "required",
             'description' => 'nullable|string',
             'client' => 'nullable|string|max:255',
             'start_date' => 'nullable|date',
@@ -31,11 +32,7 @@ class StoreProjectRequest extends FormRequest
             'status' => 'nullable|string|in:in progress,completed,on hold,cancelled',
             'budget' => 'nullable|numeric|min:0',
             'repository' => 'nullable|url',
-            'tech_stack' => 'nullable|string',
-            'tech_stack.*' => 'string|max:255', // Validazione per ciascun elemento dello stack tecnologico
-            'project_manager' => 'nullable|string|max:255',
-            'team_members' => 'nullable|string',
-            'team_members.*' => 'string|max:255', // Validazione per ciascun membro del team
+ // Validazione per ciascun membro del team
         ];
         [
             //eventuali messaggi di errore andranno qui!
