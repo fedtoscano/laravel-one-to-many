@@ -25,6 +25,7 @@ class ProjectSeeder extends Seeder
             $project->start_date = $faker->dateTime("now");
             $project->end_date = $faker->dateTimeThisYear();
             $project->status = $faker->boolean();
+            $project->image = $faker->imageUrl(600, 600, "projects");
             $project->budget = $faker->numberBetween(500, 2500);
             $project->repository = $faker->url();
 

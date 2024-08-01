@@ -27,12 +27,12 @@ class StoreProjectRequest extends FormRequest
             "type_id" => "required",
             'description' => 'nullable|string',
             'client' => 'nullable|string|max:255',
+            "image"=>"image",
             'start_date' => 'nullable|date',
             'end_date' => 'nullable|date|after_or_equal:start_date',
             'status' => 'nullable|string|in:in progress,completed,on hold,cancelled',
             'budget' => 'nullable|numeric|min:0',
             'repository' => 'nullable|url',
- // Validazione per ciascun membro del team
         ];
         [
             //eventuali messaggi di errore andranno qui!

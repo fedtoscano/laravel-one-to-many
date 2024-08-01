@@ -16,6 +16,7 @@ class Project extends Model
         'description',
         'client',
         'start_date',
+        "image",
         'end_date',
         'status',
         'budget',

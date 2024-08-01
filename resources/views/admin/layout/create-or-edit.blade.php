@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-8">
-            <form action="@yield("form-action")" method="POST">
+            <form action="@yield("form-action")" method="POST" enctype="multipart/form-data">
                 @yield("form-method")
                 @csrf
 
@@ -31,7 +31,6 @@
                             @if ($errors->any())
                             <input name="technologies[]" type="checkbox" class="btn-check" id="technology-check-{{$technology->id }}"
                             autocomplete="off" value="{{$technology->id}}" {{in_array($technologies->id, old($technologies, [])) ? "checked" : ""}}>
-
                             @else
                             <input name="technologies[]" type="checkbox" class="btn-check" id="technology-check-{{$technology->id }}"
                             autocomplete="off" value="{{$technology->id}}" {{($project->technologies->contains($technology)) ? "checked" : ""}}>
@@ -42,6 +41,11 @@
                             </label>
                         @endforeach
                     </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Project-image">Project's Image</label>
+                    <input type="file" name="image" id="project-image">
                 </div>
 
                 <div class="mb-3">
